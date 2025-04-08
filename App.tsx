@@ -1,12 +1,14 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 
-export default function App() {
+export function App() {
     return (
-        <View style={styles.container}>
-            <Text>EZCom</Text>
-            <StatusBar style="auto" />
-        </View>
+        <>
+            <StatusBar />
+            <View>
+                <Text>EZCOM</Text>
+            </View>
+        </>
     );
 }
 
