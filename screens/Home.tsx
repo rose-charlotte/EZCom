@@ -1,9 +1,9 @@
 import { View, Text, Image, StyleSheet, FlatList } from "react-native";
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { GlobalStyles } from "../constants/styles";
 import { UserContext } from "../store/context/UserContext";
 import { MessagesContext } from "../store/context/MessageContext";
-import { fetchMessages } from "../Store/API/Api";
+import { fetchMessages } from "../store/API/Api";
 
 const Home = () => {
     const messagesCtx = useContext(MessagesContext);

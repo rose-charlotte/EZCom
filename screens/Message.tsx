@@ -3,7 +3,7 @@ import React, { useContext, useState } from "react";
 import { UserContext } from "../store/context/UserContext";
 import { Input } from "../components/Auth/Input";
 import { MessagesContext } from "../store/context/MessageContext";
-import { storeMessages } from "../Store/API/Api";
+import { storeMessages } from "../store/API/Api";
 
 export function Message() {
     const user = useContext(UserContext);

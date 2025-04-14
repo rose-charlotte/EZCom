@@ -18,7 +18,7 @@ import { MessageContextProvider } from "./store/context/MessageContext";
 const Stack = createNativeStackNavigator();
 const BottomTabs = createBottomTabNavigator();
 
-export default function App() {
+export function App() {
     const [user, setUser] = useState<FirebaseAuthTypes.User>();
 
     // Set an initializing state whilst Firebase connects
@@ -39,54 +39,52 @@ export default function App() {
 
     return (
         <UserContext.Provider value={user}>
-            <MessageContextProvider>
-                <StatusBar style="auto" />
-                <NavigationContainer>
-                    <BottomTabs.Navigator
-                        screenOptions={{
-                            headerStyle: { backgroundColor: GlobalStyles.colors.paleBlue },
-                            headerTintColor: GlobalStyles.colors.darkBlue,
-                            tabBarStyle: { backgroundColor: GlobalStyles.colors.paleBlue },
-                            tabBarActiveTintColor: GlobalStyles.colors.darkBlue,
-                            tabBarInactiveTintColor: GlobalStyles.colors.lightBlue,
-                        }}
-                    >
-                        {user && (
-                            <>
-                                <BottomTabs.Screen
-                                    name="Profil"
-                                    component={Profil}
-                                    options={{
-                                        tabBarIcon: ({ color, size }) => (
-                                            <Ionicons name="person-circle-sharp" size={size} color={color} />
-                                        ),
-                                    }}
-                                />
-                                <BottomTabs.Screen
-                                    name="Home"
-                                    component={Home}
-                                    options={{
-                                        tabBarIcon: ({ color, size }) => (
-                                            <Ionicons name="home" size={size} color={color} />
-                                        ),
-                                    }}
-                                />
-                                <BottomTabs.Screen
-                                    name="Message"
-                                    component={Message}
-                                    options={{
-                                        tabBarIcon: ({ color, size }) => (
-                                            <Ionicons name="chatbubble-ellipses-outline" size={size} color={color} />
-                                        ),
-                                    }}
-                                />
-                            </>
-                        )}
+            {/* <MessageContextProvider> */}
+            <StatusBar style="auto" />
+            <NavigationContainer>
+                <BottomTabs.Navigator
+                    screenOptions={{
+                        headerStyle: { backgroundColor: GlobalStyles.colors.paleBlue },
+                        headerTintColor: GlobalStyles.colors.darkBlue,
+                        tabBarStyle: { backgroundColor: GlobalStyles.colors.paleBlue },
+                        tabBarActiveTintColor: GlobalStyles.colors.darkBlue,
+                        tabBarInactiveTintColor: GlobalStyles.colors.lightBlue,
+                    }}
+                >
+                    {user && (
+                        <>
+                            <BottomTabs.Screen
+                                name="Profil"
+                                component={Profil}
+                                options={{
+                                    tabBarIcon: ({ color, size }) => (
+                                        <Ionicons name="person-circle-sharp" size={size} color={color} />
+                                    ),
+                                }}
+                            />
+                            <BottomTabs.Screen
+                                name="Home"
+                                component={Home}
+                                options={{
+                                    tabBarIcon: ({ color, size }) => <Ionicons name="home" size={size} color={color} />,
+                                }}
+                            />
+                            <BottomTabs.Screen
+                                name="Message"
+                                component={Message}
+                                options={{
+                                    tabBarIcon: ({ color, size }) => (
+                                        <Ionicons name="chatbubble-ellipses-outline" size={size} color={color} />
+                                    ),
+                                }}
+                            />
+                        </>
+                    )}
 
-                        {!user && <BottomTabs.Screen name="Signup" component={SignUp} />}
-                    </BottomTabs.Navigator>
-                </NavigationContainer>
-            </MessageContextProvider>
+                    {!user && <BottomTabs.Screen name="Signup" component={SignUp} />}
+                </BottomTabs.Navigator>
+            </NavigationContainer>
+            {/* </MessageContextProvider> */}
         </UserContext.Provider>
     );
 }
