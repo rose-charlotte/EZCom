@@ -57,7 +57,7 @@ export function App() {
                                 name="Profil"
                                 component={Profil}
                                 options={{
-                                    tabBarIcon: ({ color, size }) => (
+                                    tabBarIcon: ({ color, size }: { color: string; size: number }) => (
                                         <Ionicons name="person-circle-sharp" size={size} color={color} />
                                     ),
                                 }}
@@ -66,14 +66,16 @@ export function App() {
                                 name="Home"
                                 component={Home}
                                 options={{
-                                    tabBarIcon: ({ color, size }) => <Ionicons name="home" size={size} color={color} />,
+                                    tabBarIcon: ({ color, size }: { color: string; size: number }) => (
+                                        <Ionicons name="home" size={size} color={color} />
+                                    ),
                                 }}
                             />
                             <BottomTabs.Screen
                                 name="Message"
                                 component={Message}
                                 options={{
-                                    tabBarIcon: ({ color, size }) => (
+                                    tabBarIcon: ({ color, size }: { color: string; size: number }) => (
                                         <Ionicons name="chatbubble-ellipses-outline" size={size} color={color} />
                                     ),
                                 }}
